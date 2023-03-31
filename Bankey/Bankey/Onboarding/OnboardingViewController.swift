@@ -7,7 +7,11 @@
 
 import UIKit
 
+
+
 class OnboardingViewController: UIViewController {
+
+    //MARK: - Properties
     
     let stackView = UIStackView()
     let imageView = UIImageView()
