@@ -9,6 +9,22 @@ import UIKit
 
 class AccountSummaryCell : UITableViewCell {
     
+    //MARK: - Properties
+    enum AccountType: String {
+        case Banking
+        case CreditCard
+        case Investment
+    }
+    
+    struct ViewModel {
+        let accountType: AccountType
+        let accountName: String
+    }
+    
+    // We can't guarantee that vm will be fully fetched when we open that page
+    let viewModel: ViewModel? = nil
+
+    
     let typeLabel = UILabel()
     let underlineView = UIView() // Simply make a view.
     let nameLabel = UILabel()
@@ -129,4 +145,24 @@ extension AccountSummaryCell {
             
             return rootString
         }
+}
+
+extension AccountSummaryCell {
+    func configure(with vm: ViewModel) {
+        
+        typeLabel.text = vm.accountType.rawValue
+        nameLabel.text = vm.accountName
+
+        switch vm.accountType {
+        case .Banking:
+            underlineView.backgroundColor = appColor
+            balanceLabel.text = "Current balance"
+        case .CreditCard:
+            underlineView.backgroundColor = .systemOrange
+            balanceLabel.text = "Current balance"
+        case .Investment:
+            underlineView.backgroundColor = .systemPurple
+            balanceLabel.text = "Value"
+        }
+    }
 }
