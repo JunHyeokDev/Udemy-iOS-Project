@@ -23,6 +23,8 @@
 		BF0E3F2F29D6E687001FF40C /* AccountSummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F2E29D6E687001FF40C /* AccountSummaryHeaderView.swift */; };
 		BF0E3F3129D6E6C7001FF40C /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF0E3F3029D6E6C7001FF40C /* AccountSummaryHeaderView.xib */; };
 		BF0E3F3529D9512B001FF40C /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F3429D9512B001FF40C /* AccountSummaryCell.swift */; };
+		BF0E3F3729DA405F001FF40C /* DecimalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F3629DA405F001FF40C /* DecimalUtils.swift */; };
+		BF0E3F3929DA40CB001FF40C /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F3829DA40CB001FF40C /* CurrencyFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		BF0E3F2E29D6E687001FF40C /* AccountSummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryHeaderView.swift; sourceTree = "<group>"; };
 		BF0E3F3029D6E6C7001FF40C /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
 		BF0E3F3429D9512B001FF40C /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
+		BF0E3F3629DA405F001FF40C /* DecimalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalUtils.swift; sourceTree = "<group>"; };
+		BF0E3F3829DA40CB001FF40C /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,8 @@
 			children = (
 				BF0E3F2329D6CE9C001FF40C /* LocalState.swift */,
 				BF0E3F2729D6DACC001FF40C /* UIVivewController+Utils.swift */,
+				BF0E3F3829DA40CB001FF40C /* CurrencyFormatter.swift */,
+				BF0E3F3629DA405F001FF40C /* DecimalUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -236,9 +242,11 @@
 				BF0E3F3529D9512B001FF40C /* AccountSummaryCell.swift in Sources */,
 				BF0E3F1929D4A141001FF40C /* LoginView.swift in Sources */,
 				BF0E3F2829D6DACC001FF40C /* UIVivewController+Utils.swift in Sources */,
+				BF0E3F3929DA40CB001FF40C /* CurrencyFormatter.swift in Sources */,
 				BF0E3F2429D6CE9C001FF40C /* LocalState.swift in Sources */,
 				BF0E3F2129D646EF001FF40C /* OnboardingViewController.swift in Sources */,
 				BF0E3F1C29D4AA1D001FF40C /* File.swift in Sources */,
+				BF0E3F3729DA405F001FF40C /* DecimalUtils.swift in Sources */,
 				BF0E3F0729D49E41001FF40C /* LoginViewController.swift in Sources */,
 				BF0E3F1F29D58E22001FF40C /* OnboardingContainerViewController.swift in Sources */,
 				BF0E3F0329D49E41001FF40C /* AppDelegate.swift in Sources */,
