@@ -7,8 +7,22 @@
 
 import UIKit
 
+
+protocol LoginViewControllerDelegate: AnyObject {
+//    func didLogin(_ sender : LoginViewController) // pass data
+    func didLogin()
+}
+
+protocol LogoutDelegate: AnyObject {
+    func didLogout()
+}
+
 class LoginViewController: UIViewController {
 
+    //MARK: - Properties
+    
+    weak var delegate : LoginViewControllerDelegate?
+    
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
@@ -96,8 +110,9 @@ extension LoginViewController {
             configureView(withMessage: "Username / password cannot be blank")
         }
         
-        if username == "Kevin" && password == "Welcome" {
+        if username == "" && password == "" {
             signInButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
         } else {
             configureView(withMessage: "Incorrect username / password")
         }
