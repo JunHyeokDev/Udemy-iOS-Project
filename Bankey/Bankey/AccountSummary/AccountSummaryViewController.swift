@@ -13,18 +13,31 @@ class AccountSummaryViewController: UIViewController {
     var tableView = UITableView()
     var accounts: [AccountSummaryCell.ViewModel] = []
     
+    // It will be instanciated when it is actually called.
+    lazy var logoutBarButtonItem : UIBarButtonItem = {
+        let btn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped) )
+        btn.tintColor = .label // That's gonna make sure it is sycned light and dark mode
+        return btn
+    }()
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupTableHeaderView()
-        fetchData()
+        setupNavigationBar()
     }
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
+    }
+    
 }
 
 extension AccountSummaryViewController {
     private func setup() {
         setupTableView()
         setupTableHeaderView()
+        fetchData()
     }
     
     private func setupTableView() {
@@ -113,3 +126,14 @@ extension AccountSummaryViewController {
         accounts.append(investment2)
     }
 }
+
+
+// MARK: - Actions
+
+extension AccountSummaryViewController {
+    @objc
+    func logoutTapped(sender : UIButton) {
+        NotificationCenter.default.post(name: .Logout, object: nil)
+    }
+}
+
