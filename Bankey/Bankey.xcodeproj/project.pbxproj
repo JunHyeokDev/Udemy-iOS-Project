@@ -31,6 +31,7 @@
 		BF0E3F4F29DCE5C2001FF40C /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F4E29DCE5C2001FF40C /* ShakeyBellView.swift */; };
 		BF0E3F5129DECBFD001FF40C /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F5029DECBFD001FF40C /* Date+Utils.swift */; };
 		BF0E3F5329DECE1B001FF40C /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F5229DECE1B001FF40C /* AccountSummaryViewController+Networking.swift */; };
+		BF387C4529DEDEB3001F4FBC /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		BF0E3F4E29DCE5C2001FF40C /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		BF0E3F5029DECBFD001FF40C /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		BF0E3F5229DECE1B001FF40C /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
+		BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +209,8 @@
 		BF0E3F3F29DAE62C001FF40C /* BankeyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF0E3F4729DAE6FB001FF40C /* CurrencyFormatterTests.swift */,
+				BF387C4329DEDE96001F4FBC /* AccountSummary */,
+				BF387C4229DEDE8E001F4FBC /* Utils */,
 			);
 			path = BankeyUnitTests;
 			sourceTree = "<group>";
@@ -218,6 +221,22 @@
 				BF0E3F4E29DCE5C2001FF40C /* ShakeyBellView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		BF387C4229DEDE8E001F4FBC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E3F4729DAE6FB001FF40C /* CurrencyFormatterTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BF387C4329DEDE96001F4FBC /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */,
+			);
+			path = AccountSummary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0E3F4829DAE6FB001FF40C /* CurrencyFormatterTests.swift in Sources */,
+				BF387C4529DEDEB3001F4FBC /* ProfileTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
