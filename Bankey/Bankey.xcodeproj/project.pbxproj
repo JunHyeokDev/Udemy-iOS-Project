@@ -32,6 +32,8 @@
 		BF0E3F5129DECBFD001FF40C /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F5029DECBFD001FF40C /* Date+Utils.swift */; };
 		BF0E3F5329DECE1B001FF40C /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E3F5229DECE1B001FF40C /* AccountSummaryViewController+Networking.swift */; };
 		BF387C4529DEDEB3001F4FBC /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */; };
+		BFEE3E5029DF875800E55721 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE3E4F29DF875800E55721 /* SkeletonLoadable.swift */; };
+		BFEE3E5229DF888F00E55721 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE3E5129DF888F00E55721 /* SkeletonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		BF0E3F5029DECBFD001FF40C /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		BF0E3F5229DECE1B001FF40C /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		BFEE3E4F29DF875800E55721 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		BFEE3E5129DF888F00E55721 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				BF0E3F3429D9512B001FF40C /* AccountSummaryCell.swift */,
+				BFEE3E5129DF888F00E55721 /* SkeletonCell.swift */,
+				BFEE3E4F29DF875800E55721 /* SkeletonLoadable.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -355,7 +361,9 @@
 				BF0E3F0729D49E41001FF40C /* LoginViewController.swift in Sources */,
 				BF0E3F1F29D58E22001FF40C /* OnboardingContainerViewController.swift in Sources */,
 				BF0E3F4C29DB9237001FF40C /* UITextField+SecureToggle.swift in Sources */,
+				BFEE3E5029DF875800E55721 /* SkeletonLoadable.swift in Sources */,
 				BF0E3F0329D49E41001FF40C /* AppDelegate.swift in Sources */,
+				BFEE3E5229DF888F00E55721 /* SkeletonCell.swift in Sources */,
 				BF0E3F4A29DB8E2D001FF40C /* NSNotificationName.swift in Sources */,
 				BF0E3F2D29D6E1F5001FF40C /* AccountSummaryViewController.swift in Sources */,
 				BF0E3F2629D6D216001FF40C /* DummyViewController.swift in Sources */,
