@@ -64,7 +64,7 @@ extension PasswordCriteriaView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .subheadline)
         label.textColor = .secondaryLabel
-        label.text = "Uppercase Letter (A-Z)"
+//        label.text = "Uppercase Letter (A-Z)"
         
         
     }

@@ -13,6 +13,7 @@
 		BFE3661D29E10C6B00CEF26A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE3661B29E10C6B00CEF26A /* LaunchScreen.storyboard */; };
 		BFE3662829E1149B00CEF26A /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3662729E1149B00CEF26A /* PasswordTextField.swift */; };
 		BFE3662E29E13D1600CEF26A /* PasswordCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3662D29E13D1600CEF26A /* PasswordCriteriaView.swift */; };
+		BFE3663029E154FE00CEF26A /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3662F29E154FE00CEF26A /* PasswordStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BFE3661E29E10C6B00CEF26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFE3662729E1149B00CEF26A /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		BFE3662D29E13D1600CEF26A /* PasswordCriteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriaView.swift; sourceTree = "<group>"; };
+		BFE3662F29E154FE00CEF26A /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				BFE3662D29E13D1600CEF26A /* PasswordCriteriaView.swift */,
+				BFE3662F29E154FE00CEF26A /* PasswordStatusView.swift */,
 			);
 			path = PasswordStatusView;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				BFE3661529E10C6A00CEF26A /* ViewController.swift in Sources */,
 				BFE3662829E1149B00CEF26A /* PasswordTextField.swift in Sources */,
 				BFE3662E29E13D1600CEF26A /* PasswordCriteriaView.swift in Sources */,
+				BFE3663029E154FE00CEF26A /* PasswordStatusView.swift in Sources */,
 				BFE3661129E10C6A00CEF26A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
