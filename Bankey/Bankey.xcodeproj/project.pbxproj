@@ -34,6 +34,8 @@
 		BF387C4529DEDEB3001F4FBC /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */; };
 		BFEE3E5029DF875800E55721 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE3E4F29DF875800E55721 /* SkeletonLoadable.swift */; };
 		BFEE3E5229DF888F00E55721 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE3E5129DF888F00E55721 /* SkeletonCell.swift */; };
+		BFEE3E5529E0428900E55721 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE3E5429E0428900E55721 /* ProfileManager.swift */; };
+		BFEE3E5929E0463000E55721 /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE3E5829E0463000E55721 /* AccountSummaryViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		BFEE3E4F29DF875800E55721 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
 		BFEE3E5129DF888F00E55721 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
+		BFEE3E5429E0428900E55721 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		BFEE3E5829E0463000E55721 /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		BF0E3F2B29D6E1BB001FF40C /* AccountSummary */ = {
 			isa = PBXGroup;
 			children = (
+				BFEE3E5329E0427700E55721 /* Networking */,
 				BF0E3F2C29D6E1F5001FF40C /* AccountSummaryViewController.swift */,
 				BF0E3F5229DECE1B001FF40C /* AccountSummaryViewController+Networking.swift */,
 				BF0E3F3229D950EB001FF40C /* Header */,
@@ -241,8 +246,17 @@
 			isa = PBXGroup;
 			children = (
 				BF387C4429DEDEB3001F4FBC /* ProfileTests.swift */,
+				BFEE3E5829E0463000E55721 /* AccountSummaryViewControllerTests.swift */,
 			);
 			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		BFEE3E5329E0427700E55721 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BFEE3E5429E0428900E55721 /* ProfileManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +367,7 @@
 				BF0E3F4F29DCE5C2001FF40C /* ShakeyBellView.swift in Sources */,
 				BF0E3F1929D4A141001FF40C /* LoginView.swift in Sources */,
 				BF0E3F2829D6DACC001FF40C /* UIVivewController+Utils.swift in Sources */,
+				BFEE3E5529E0428900E55721 /* ProfileManager.swift in Sources */,
 				BF0E3F3929DA40CB001FF40C /* CurrencyFormatter.swift in Sources */,
 				BF0E3F2429D6CE9C001FF40C /* LocalState.swift in Sources */,
 				BF0E3F2129D646EF001FF40C /* OnboardingViewController.swift in Sources */,
@@ -376,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEE3E5929E0463000E55721 /* AccountSummaryViewControllerTests.swift in Sources */,
 				BF0E3F4829DAE6FB001FF40C /* CurrencyFormatterTests.swift in Sources */,
 				BF387C4529DEDEB3001F4FBC /* ProfileTests.swift in Sources */,
 			);

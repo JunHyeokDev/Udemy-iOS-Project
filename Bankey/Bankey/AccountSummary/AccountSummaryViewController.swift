@@ -22,6 +22,19 @@ class AccountSummaryViewController: UIViewController {
     var tableView = UITableView()
     var headerView = AccountSummaryHeaderView(frame: .zero) // set where the header will be! (location)
     let refreshControl = UIRefreshControl()
+    
+    var profileManager: ProfileManageable = ProfileManager()
+    // Okay. orifileManager is instance of ProfileManager class.
+    // and it's type is also kind of ProfileMnageable. So it can creat it's own ability of ProfileManageable.
+    
+    // Error alert
+    lazy var errorAlter: UIAlertController = {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        return alert
+    }()
+    
+    
     var isLoaded = false
     
     // It will be instanciated when it is actually called.
@@ -132,59 +145,58 @@ extension AccountSummaryViewController: UITableViewDelegate {
 }
 
 // MARK: - Networking
+// MARK: - Networking
 extension AccountSummaryViewController {
     private func fetchData() {
         let group = DispatchGroup()
-        group.enter()
         
+        // Testing - random number selection
         let userId = String(Int.random(in: 1..<4))
         
-        fetchProfile(forUserId: userId) { result in
-            switch result {
-            case .success(let profile):
-                self.profile = profile
-            case .failure(let error):
-                let title : String
-                let message : String
-                
-                print(error.localizedDescription)
-                switch error {
-                case .serverError:
-                    title = "Server Error"
-                    message = "Ensure you are connected to the internet. Please try again."
-                case .decodingError:
-                    title = "Decoding Error"
-                    message = "We could not process your request. Please try again."
-                }
-                self.showErrorAlert(title: title, message: message)
-                
-            }
-            group.leave()
-        }
+        fetchProfile(group: group, userId: userId)
+        fetchAccounts(group: group, userId: userId)
         
-        group.enter()
-        fetchAccounts(forUserId: userId) { result in
-            switch result {
-            case .success(let accounts):
-                self.accounts = accounts
-            case .failure(let error):
-                self.dispalyError(error)
-            }
-            group.leave()
-        }
-        
-        // This code will only be run when the group work are all done
         group.notify(queue: .main) {
-            
-            guard let profile = self.profile else { return }
-            
-            self.isLoaded = true
-            self.configureTableHeaderView(with: profile)
-            self.configureTableCells(with: self.accounts)
-            self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing() // end refresh if it's possible
+            self.reloadView()
         }
     }
+    
+    private func fetchProfile(group: DispatchGroup, userId: String) {
+    group.enter()
+    profileManager.fetchProfile(forUserId: userId) { result in
+        switch result {
+        case .success(let profile):
+            self.profile = profile
+        case .failure(let error):
+            self.displayError(error)
+        }
+        group.leave()
+    }
+}
+    
+private func fetchAccounts(group: DispatchGroup, userId: String) {
+    group.enter()
+    fetchAccounts(forUserId: userId) { result in
+        switch result {
+        case .success(let accounts):
+            self.accounts = accounts
+        case .failure(let error):
+            self.displayError(error)
+        }
+        group.leave()
+    }
+}
+    
+private func reloadView() {
+    self.tableView.refreshControl?.endRefreshing()
+    
+    guard let profile = self.profile else { return }
+    
+    self.isLoaded = true
+    self.configureTableHeaderView(with: profile)
+    self.configureTableCells(with: self.accounts)
+    self.tableView.reloadData()
+}
     
     private func configureTableHeaderView(with profile: Profile) {
         let vm = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Good morning,",
@@ -201,7 +213,12 @@ extension AccountSummaryViewController {
         }
     }
     
-    private func dispalyError(_ error : NetworkError) {
+    private func displayError(_ error : NetworkError) {
+        let titlteAndMessage = titleAndMessage(for :error)
+        self.showErrorAlert(title: titlteAndMessage.0, message: titlteAndMessage.1)
+    }
+    
+    private func titleAndMessage(for error: NetworkError) -> (String,String) {
         let title : String
         let message : String
         
@@ -214,17 +231,20 @@ extension AccountSummaryViewController {
             title = "Decoding Error"
             message = "We could not process your request. Please try again."
         }
-        self.showErrorAlert(title: title, message: message)
+        return (title,message)
     }
     
     private func showErrorAlert(title : String, message : String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
+//        let alert = UIAlertController(title: title,
+//                                      message: message,
+//                                      preferredStyle: .alert)
+//
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        errorAlter.title = title
+        errorAlter.message = message
         
-        present(alert, animated: true, completion: nil)
+        present(errorAlter, animated: true, completion: nil)
     }
     
 }
@@ -247,5 +267,16 @@ extension AccountSummaryViewController {
         profile = nil
         accounts = []
         isLoaded = false
+    }
+}
+
+
+// MARK: - Unit Testing
+extension AccountSummaryViewController {
+    func titleAndMessageForTesting(for error: NetworkError) -> (String,String) {
+        return titleAndMessage(for: error)
+    }
+    func forceFetchProfile() {
+        fetchProfile(group: DispatchGroup(), userId: "1")
     }
 }
