@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol PasswordTextFieldDelegate : AnyObject {
+    func editingChanged(_ sender: PasswordTextField)
+}
+
+
 class PasswordTextField: UIView {
 
     //MARK: - Properties
@@ -18,6 +23,8 @@ class PasswordTextField: UIView {
     let divider = UIView()
     
     let placeHolderText: String
+    
+    weak var delegate : PasswordTextFieldDelegate?
     
     init(placeHolderText: String) {
         self.placeHolderText = placeHolderText
@@ -45,10 +52,12 @@ extension PasswordTextField {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         textField.placeholder = placeHolderText
-        //textField.delegate = self
+        textField.delegate = self
         textField.keyboardType = .asciiCapable // NO EMOJI HERE!
         textField.attributedPlaceholder = NSAttributedString(string: placeHolderText,       attributes : [NSAttributedString.Key.foregroundColor : UIColor.secondaryLabel])
-                                                       
+        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        
+        
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
         eyeButton.setImage(UIImage(systemName: "eye.slash.circle"), for: .selected)
@@ -68,7 +77,7 @@ extension PasswordTextField {
         
         errorLable.numberOfLines = 0
         errorLable.lineBreakMode = .byWordWrapping
-        errorLable.isHidden = false
+        errorLable.isHidden = true
     }
     
     func layout() {
@@ -119,4 +128,14 @@ extension PasswordTextField {
         textField.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
     }
+}
+
+
+
+// MARK: - Delegate
+extension PasswordTextField : UITextFieldDelegate {
+    @objc func textFieldEditingChanged(_ sender : UITextField) {
+        delegate?.editingChanged(self)
+    }
+    // Then, How we can talk back to our View Controller?
 }
