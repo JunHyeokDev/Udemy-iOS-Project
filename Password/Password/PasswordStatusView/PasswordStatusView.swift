@@ -21,7 +21,7 @@ class PasswordStatusView: UIView {
 
     
     // Used to determine if we reset citeria back to empty state
-    private var shouldResetCriteria : Bool = true
+    var shouldResetCriteria : Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -95,18 +95,18 @@ extension PasswordStatusView {
 //            specialCharacterCriteriaView.heightAnchor.constraint(equalToConstant: height),
 //        ])
         
-        // [2] Change the Parent's Intrinsic content size.
-        // return CGSize(width: 200, height: 160)
-        // less hard code.
-         
-        
-        // How to deal stack view layout professionally?
-        // [3]
-        // by deleting the bottom anchor op stack view, contents inside of stackView
-        // doesn't feel pressure to fulfill the constaraints. so It can be natural
-        
-        // [4] Use distriution
-        // stackView.distribution
+//         [2] Change the Parent's Intrinsic content size.
+//         return CGSize(width: 200, height: 160)
+//         less hard code.
+//
+//
+//         How to deal stack view layout professionally?
+//         [3]
+//         by deleting the bottom anchor op stack view, contents inside of stackView
+//         doesn't feel pressure to fulfill the constaraints. so It can be natural
+//
+//         [4] Use distriution
+//         stackView.distribution
 
         
     }
@@ -147,6 +147,43 @@ extension PasswordStatusView {
             lowercaseMet ? lowerCaseCriteriaView.isCriteriaMet = true : lowerCaseCriteriaView.reset()
             digitcaseMet ? digitCriteriaView.isCriteriaMet = true : digitCriteriaView.reset()
             specialCharacterMet ? specialCharacterCriteriaView.isCriteriaMet = true : specialCharacterCriteriaView.reset()
+        } else {
+            // Focus lost
+            lengthCriteriaView.isCriteriaMet = lengthAndNoSpaceMet
+            uppercaseCriteriaView.isCriteriaMet = uppercaseMet
+            lowerCaseCriteriaView.isCriteriaMet = lowercaseMet
+            digitCriteriaView.isCriteriaMet = digitcaseMet
+            specialCharacterCriteriaView.isCriteriaMet = specialCharacterMet
         }
+    }
+    
+    func validate(_ text : String) -> Bool {
+        var container : [Bool] = []
+        
+        let uppercaseMet = PasswordCriteria.uppercaseMet(text)
+        let lowercaseMet = PasswordCriteria.lowercaseMet(text)
+        let digitcaseMet = PasswordCriteria.digitcaseMet(text)
+        let specialCharacterMet = PasswordCriteria.specialCharacterMet(text)
+        
+        container.append(uppercaseMet)
+        container.append(lowercaseMet)
+        container.append(digitcaseMet)
+        container.append(specialCharacterMet)
+
+        let shouldIGoodToGo = container.filter { $0 == true }.count
+        let lengthAndNoSpaceMet = PasswordCriteria.lengthAndNoSpaceMet(text)
+        
+        if shouldIGoodToGo >= 3 && lengthAndNoSpaceMet { return true }
+        
+        // Check for 3 of 4 criteria here... ?
+        return false
+    }
+    
+    func reset() {
+        lengthCriteriaView.reset()
+        uppercaseCriteriaView.reset()
+        lowerCaseCriteriaView.reset()
+        digitCriteriaView.reset()
+        specialCharacterCriteriaView.reset()
     }
 }
