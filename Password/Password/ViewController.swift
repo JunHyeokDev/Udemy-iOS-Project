@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         style()
         layout()
     }
-
+    
 }
 
 
@@ -37,6 +37,12 @@ extension ViewController {
         setupNewPassword()
         setupConfirmPassword()
         setupDismisskeyboardGesture()
+        setupKeyboardHiding()
+    }
+    
+    private func setupKeyboardHiding() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupNewPassword() {
@@ -115,7 +121,7 @@ extension ViewController {
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.configuration = .filled()
         resetButton.setTitle("Reset password", for: [])
-        //resetButton.addTarget(self, action: #selector(resetPasswordButtonTapped), for: .primaryActionTriggered)
+        resetButton.addTarget(self, action: #selector(resetPasswordButtonTapped), for: .primaryActionTriggered)
     }
     func layout() {
         stackView.addArrangedSubview(passwordTextField)
@@ -124,7 +130,7 @@ extension ViewController {
         stackView.addArrangedSubview(resetButton)
         
         view.addSubview(stackView)
-
+        
         NSLayoutConstraint.activate([
             
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -155,5 +161,68 @@ extension ViewController : PasswordTextFieldDelegate {
         if sender == passwordTextField {
             statusView.updateDisplay(sender.textField.text ?? "")
         }
+    }
+}
+
+// MARK: - Keyboard
+extension ViewController {
+    @objc func keyboardWillShow(sender: NSNotification) {
+        // Brute forcing way!
+        //view.frame.origin.y = view.frame.origin.y - 200
+        
+        guard let userInfo = sender.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+        
+        // check if the top of the keyboard is above the  bottom of the currently focused textbox
+        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+        
+        // Convert its own coodinate system to the parent's view system. So superview it is!
+        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+        // It's own coordinate system
+        //let textFieldBottomY = currentTextField.frame.origin.y + currentTextField.frame.size.height
+        
+        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+        
+//        print("DEBUG : convertedTextFieldFrame.origin.y = \(convertedTextFieldFrame.origin.y )")
+//        print("DEBUG : convertedTextFieldFrame.size.height = \(convertedTextFieldFrame.size.height)")
+//        print("DEBUG : textFieldBottomY = \(textFieldBottomY)")
+        
+        if textFieldBottomY > keyboardTopY {
+//            print("DEBUG : convertedTextFieldFrame.origin.y = \(convertedTextFieldFrame.origin.y )")
+//            print("DEBUG : convertedTextFieldFrame.size.height = \(convertedTextFieldFrame.size.height)")
+            let textBoxY = convertedTextFieldFrame.origin.y
+            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+            view.frame.origin.y = newFrameY
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+}
+
+
+// MARK: Actions
+extension ViewController {
+
+    @objc func resetPasswordButtonTapped(sender: UIButton) {
+        view.endEditing(true)
+
+        let isValidNewPassword = passwordTextField.validate()
+        let isValidConfirmPassword = confirmPasswordTextField.validate()
+
+        if isValidNewPassword && isValidConfirmPassword {
+            showAlert(title: "Success", message: "You have successfully changed your password.")
+        }
+    }
+
+    private func showAlert(title: String, message: String) {
+        let alert =  UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        alert.title = title
+        alert.message = message
+        present(alert, animated: true, completion: nil)
     }
 }

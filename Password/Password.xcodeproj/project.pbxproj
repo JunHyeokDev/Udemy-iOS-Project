@@ -15,6 +15,7 @@
 		BFE3662E29E13D1600CEF26A /* PasswordCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3662D29E13D1600CEF26A /* PasswordCriteriaView.swift */; };
 		BFE3663029E154FE00CEF26A /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3662F29E154FE00CEF26A /* PasswordStatusView.swift */; };
 		BFE3665229E258A900CEF26A /* PasswordCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3665129E258A900CEF26A /* PasswordCriteria.swift */; };
+		BFE3665529E378B300CEF26A /* Responder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE3665429E378B300CEF26A /* Responder+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BFE3662D29E13D1600CEF26A /* PasswordCriteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriaView.swift; sourceTree = "<group>"; };
 		BFE3662F29E154FE00CEF26A /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
 		BFE3665129E258A900CEF26A /* PasswordCriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteria.swift; sourceTree = "<group>"; };
+		BFE3665429E378B300CEF26A /* Responder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Responder+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 		BFE3660429E10C6A00CEF26A = {
 			isa = PBXGroup;
 			children = (
+				BFE3665329E3789C00CEF26A /* Utils */,
 				BFE3660F29E10C6A00CEF26A /* Password */,
 				BFE3660E29E10C6A00CEF26A /* Products */,
 			);
@@ -87,6 +90,14 @@
 				BFE3662F29E154FE00CEF26A /* PasswordStatusView.swift */,
 			);
 			path = PasswordStatusView;
+			sourceTree = "<group>";
+		};
+		BFE3665329E3789C00CEF26A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BFE3665429E378B300CEF26A /* Responder+Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				BFE3662E29E13D1600CEF26A /* PasswordCriteriaView.swift in Sources */,
 				BFE3663029E154FE00CEF26A /* PasswordStatusView.swift in Sources */,
 				BFE3661129E10C6A00CEF26A /* AppDelegate.swift in Sources */,
+				BFE3665529E378B300CEF26A /* Responder+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
